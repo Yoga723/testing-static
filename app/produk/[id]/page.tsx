@@ -5,9 +5,8 @@ interface PageProps {
   params: { id: string };
 }
 
-
-const Page = ({ params }: PageProps) => {
-  const { id } = params;
+const Page = async ({ params }: PageProps) => {
+  const { id } = await params;
 
   const product = ProductList.find((p) => p.id === parseInt(id));
   if (!product) {
@@ -47,7 +46,7 @@ const Page = ({ params }: PageProps) => {
 };
 
 // Generate static paths based on the product data
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ id: string }[]> {
   return ProductList.map((product) => ({
     id: product.id.toString(),
   }));
