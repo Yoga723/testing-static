@@ -1,23 +1,22 @@
-// import { FC } from "react";
-import ProductList from "@/public/data/product"; // Adjust the path if necessary
-// import { ProductProps } from "@/public/data/product";
+import ProductList from "@/data/product"; // Adjust path based on where you moved the file
 
-// interface PageProps {
-//   params: {
-//     id: string;
-//   };
-// }
+interface PageProps {
+  params: { id: string };
+}
 
-const Page = ({ params }: { params: Promise<{ id: string }> }) => {
+const Page = ({ params }: PageProps) => {
+  const { id } = params;
+
   // Find the product by ID
-  const product = ProductList.find((p) => p.id === parseInt(params.toString()));
+  const product = ProductList.find((p) => p.id === parseInt(id));
+  console.log("🚀 ~ Page ~ product:", product);
 
   // Handle case when the product is not found
   if (!product) {
     return (
       <div>
         <h1>Product Not Found</h1>
-        <p>The product with ID {params.toString()} does not exist.</p>
+        <p>The product with ID {id} does not exist.</p>
       </div>
     );
   }

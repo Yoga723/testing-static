@@ -1,5 +1,5 @@
 // import Image from "next/image";
-import ProductList from "@/public/data/product";
+import ProductList from "@/data/product";
 import Link from "next/link";
 
 export default function Home() {
