@@ -5,7 +5,7 @@ interface PageProps {
   params: { id: string };
 }
 
-const Page = async ({ params }: PageProps) => {
+const Produk = async ({ params }: PageProps) => {
   const { id } = await params;
 
   const product = ProductList.find((p) => p.id === parseInt(id));
@@ -52,4 +52,4 @@ export async function generateStaticParams(): Promise<{ id: string }[]> {
   }));
 }
 
-export default Page;
+export default Produk;
