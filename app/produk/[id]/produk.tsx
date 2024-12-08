@@ -5,7 +5,7 @@ interface PageProps {
   params: { id: string };
 }
 
-const Produk = async ({ params }: PageProps) => {
+export default async function Produk({ params }: PageProps) {
   const { id } = await params;
 
   const product = ProductList.find((p) => p.id === parseInt(id));
@@ -43,7 +43,7 @@ const Produk = async ({ params }: PageProps) => {
       </div>
     </div>
   );
-};
+}
 
 // Generate static paths based on the product data
 export async function generateStaticParams(): Promise<{ id: string }[]> {
@@ -51,5 +51,3 @@ export async function generateStaticParams(): Promise<{ id: string }[]> {
     id: product.id.toString(),
   }));
 }
-
-export default Produk;
