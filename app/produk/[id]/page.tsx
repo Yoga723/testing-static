@@ -1,17 +1,15 @@
 import ProductList from "@/data/product"; // Adjust path based on where you moved the file
+import Image from "next/image";
 
 interface PageProps {
   params: { id: string };
 }
 
+
 const Page = ({ params }: PageProps) => {
   const { id } = params;
 
-  // Find the product by ID
   const product = ProductList.find((p) => p.id === parseInt(id));
-  console.log("🚀 ~ Page ~ product:", product);
-
-  // Handle case when the product is not found
   if (!product) {
     return (
       <div>
@@ -34,11 +32,13 @@ const Page = ({ params }: PageProps) => {
       <div>
         <h3>Images:</h3>
         {product.gambar.map((img) => (
-          <img
+          <Image
             key={img.id}
             src={img.src}
             alt={img.title}
-            style={{ width: "200px", marginRight: "10px" }}
+            width={200}
+            height={200}
+            style={{ marginRight: "10px" }}
           />
         ))}
       </div>
